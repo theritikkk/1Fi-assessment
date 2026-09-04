@@ -4,15 +4,15 @@
 
 ---
 
-## 🔗 Demo Links
+## Demo Links
 
-- **Live Demo**: `[ADD LINK]` (e.g. `https://1fi-assessment.vercel.app`)
-- **Backend API**: `[ADD LINK]` (e.g. `https://onefi-api.onrender.com/health`)
-- **Demo Video Walkthrough**: `[ADD LINK]` (Loom / YouTube)
+- **Live Demo**: `https://frontend-rose-iota-74.vercel.app/`
+- **Backend API**: `https://onefi-assessment.onrender.com`
+- **Demo Video Walkthrough**: `https://drive.google.com/file/d/1GR0ugaVMzgxGCf614R7Xv9PCsXml98zo/view?usp=sharing`
 
 ---
 
-## 🌟 Key Features
+## Key Features
 
 1. **Dynamic Catalog & Relational Data Flow**:
    - Zero hardcoded product or EMI data in frontend components.
@@ -43,7 +43,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology | Purpose |
 | :--- | :--- | :--- |
@@ -55,7 +55,7 @@
 
 ---
 
-## 🏗️ Architecture & Data Flow
+## Architecture & Data Flow
 
 ```mermaid
 graph TD
@@ -89,7 +89,7 @@ graph TD
 
 ---
 
-## 🗄️ Database Schema Design
+## Database Schema Design
 
 The database schema is normalized and models real-world e-commerce & fintech lending relationships:
 
