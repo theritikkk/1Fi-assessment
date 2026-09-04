@@ -92,7 +92,7 @@ export const ProductPage: React.FC = () => {
                 <span>Key Hardware & Tech Highlights</span>
               </div>
               <ul className="space-y-2">
-                {product.highlights.map((highlight, idx) => (
+                {product.highlights.map((highlight: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-700">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
                     <span>{highlight}</span>
