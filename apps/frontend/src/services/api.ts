@@ -1,6 +1,22 @@
 import { Product } from '../types/product.js';
 
-const API_BASE = import.meta.env.VITE_API_URL || '';
+const getApiBase = (): string => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl && envUrl.trim() !== '') {
+    return envUrl.trim().replace(/\/+$/, '');
+  }
+  // Localhost development uses Vite proxy
+  if (
+    typeof window !== 'undefined' &&
+    (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+  ) {
+    return '';
+  }
+  // Production fallback for deployed environments
+  return 'https://onefi-assessment.onrender.com';
+};
+
+const API_BASE = getApiBase();
 
 class ApiClient {
   private async request<T>(endpoint: string): Promise<T> {
