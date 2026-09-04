@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String     @id @default(uuid())
+  slug        String     @unique
+  name        String
+  brand       String
+  tagline     String?
+  description String     @db.Text
+  baseMrp     Decimal    @db.Decimal(10, 2)
+  basePrice   Decimal    @db.Decimal(10, 2)
+  badge       String?
+  rating      Decimal?   @default(4.8) @db.Decimal(2, 1)
+  reviewCount Int?       @default(1250)
+  highlights  String[]
+  variants    Variant[]
+  emiPlans    EmiPlan[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@index([slug])
+}
+
+model Variant {
+  id            String   @id @default(uuid())
+  productId     String
+  product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  sku           String   @unique
+  colorName     String
+  colorHex      String
+  storage       String
+  mrp           Decimal  @db.Decimal(10, 2)
+  price         Decimal  @db.Decimal(10, 2)
+  imageUrl      String
+  galleryImages String[]
+  isDefault     Boolean  @default(false)
+  inStock       Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([productId])
+}
+
+model EmiPlan {
+  id              String   @id @default(uuid())
+  productId       String
+  product         Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  tenureMonths    Int
+  interestRate    Decimal  @db.Decimal(5, 2)
+  monthlyPayment  Decimal  @db.Decimal(10, 2)
+  cashback        Decimal  @default(0) @db.Decimal(10, 2)
+  isRecommended   Boolean  @default(false)
+  planType        String   @default("NO_COST") // "NO_COST", "LOW_COST", "STANDARD"
+  mfReturnBenefit String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([productId])
+}

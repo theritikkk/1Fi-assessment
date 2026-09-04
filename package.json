@@ -1,0 +1,34 @@
+{
+  "name": "1fi-assessment-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "1Fi SDE1 Assignment - Mutual Fund Backed Product & EMI Web Application",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces",
+    "dev:backend": "npm run dev --workspace=apps/backend",
+    "dev:frontend": "npm run dev --workspace=apps/frontend",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "prisma:generate": "npm run prisma:generate --workspace=apps/backend",
+    "prisma:migrate": "npm run prisma:migrate --workspace=apps/backend",
+    "prisma:seed": "npm run prisma:seed --workspace=apps/backend",
+    "prisma:studio": "npm run prisma:studio --workspace=apps/backend"
+  },
+  "keywords": [
+    "1fi",
+    "fintech",
+    "emi",
+    "mutual-funds",
+    "react",
+    "express",
+    "prisma",
+    "postgresql",
+    "typescript",
+    "tailwind"
+  ],
+  "author": "",
+  "license": "MIT"
+}
